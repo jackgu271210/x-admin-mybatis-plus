@@ -2,6 +2,7 @@ package cn.qqcn.emp.vo;
 
 import cn.qqcn.common.vo.Page;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -9,6 +10,8 @@ import java.util.Date;
 public class EmpQuery extends Page {
     
     private String name;
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     private Date startDate;
+    @DateTimeFormat(pattern = "yyy-MM-dd")
     private Date endDate;
 }

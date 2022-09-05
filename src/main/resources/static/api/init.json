@@ -17,7 +17,7 @@
       "child": [
         {
           "title": "员工管理",
-          "href": "/emp",
+          "href": "emp",
           "icon": "layui-icon layui-icon-username",
           "target": "_self",
           "child": [

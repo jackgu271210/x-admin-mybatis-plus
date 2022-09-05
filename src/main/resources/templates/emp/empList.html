@@ -41,7 +41,7 @@
                         </div>
                         
                         <div class="layui-inline">
-                            <button type="button" class="layui-btn layui-btn-radius layui-btn-normal">
+                            <button lay-submit lay-filter="btn-search-filter" type="button" class="layui-btn layui-btn-radius layui-btn-normal">
                                 <i class="layui-icon layui-icon-search"></i>
                                 搜索
                             </button>
@@ -56,10 +56,10 @@
     <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
     <script th:inline="javascript">
         var ctxPath=[[@{/}]];
-        layui.use(['laydate','table'], function(){
+        layui.use(['laydate','table','form'], function(){
             var laydate = layui.laydate;
             var table = layui.table;
-
+            var form = layui.form;
             //执行一个laydate实例
             laydate.render({
                 elem: '.form_date' //指定元素
@@ -82,6 +82,24 @@
                     ,{field: 'address', title: '家庭住址', align: 'center'}
                     ,{title: '操作', width: 150, align: 'center'}
                 ]]
+            });
+            
+            //监听表单提交
+            form.on('submit(btn-search-filter)', function(data){
+                console.log(data.field) //当前容器的全部表单字段，名值对形式：{name: value}
+                // 刷新表格
+                table.reload('table-emp', {
+                    where: { //设定异步数据接口的额外参数，任意设
+                        name: data.field.name
+                        ,startDate: data.field.startDate
+                        ,endDate: data.field.endDate
+                        //…
+                    }
+                    ,page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                }); //只重载数据
+                return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
             });
         });
     </script>
