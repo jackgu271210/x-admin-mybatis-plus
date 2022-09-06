@@ -1,6 +1,8 @@
 package cn.qqcn.emp.service.impl;
 
+import cn.qqcn.emp.entity.Dept;
 import cn.qqcn.emp.entity.Emp;
+import cn.qqcn.emp.mapper.DeptMapper;
 import cn.qqcn.emp.mapper.EmpMapper;
 import cn.qqcn.emp.service.EmpService;
 import cn.qqcn.emp.vo.EmpQuery;
@@ -13,6 +15,9 @@ public class EmpServiceImpl implements EmpService {
     
     @Resource
     private EmpMapper empMapper;
+
+    @Resource
+    private DeptMapper deptMapper;
 
     @Override
     public List<Emp> getEmpList(EmpQuery param) {
@@ -27,5 +32,10 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public void addEmp(Emp emp) {
         empMapper.addEmp(emp);
+    }
+
+    @Override
+    public List<Dept> getAllDept() {
+        return deptMapper.getAllDept();
     }
 }

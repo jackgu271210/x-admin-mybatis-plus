@@ -1,11 +1,13 @@
 package cn.qqcn.emp.controller;
 
 import cn.qqcn.common.vo.Result;
+import cn.qqcn.emp.entity.Dept;
 import cn.qqcn.emp.entity.Emp;
 import cn.qqcn.emp.service.EmpService;
 import cn.qqcn.emp.vo.EmpQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +44,10 @@ public class EmpController {
     }
     
     @GetMapping("/add/ui")
-    public String toAddUI() {
+    public String toAddUI(Model model) {
+        List<Dept> deptList = empservice.getAllDept(); 
+        model.addAttribute("deptList",deptList);
         return "emp/empAdd";
     }
+    
 }
