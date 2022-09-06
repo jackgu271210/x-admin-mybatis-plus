@@ -25,6 +25,10 @@ public class Result<T> {
         return new Result(0,"success！",null,null);
     }
 
+    public static Result<Object> success(String message) {
+        return new Result(0,message,null,null);
+    }
+
     public static Result<Object> success(Object data, Long count) {
         return new Result(0,"success!",data,count);
     }

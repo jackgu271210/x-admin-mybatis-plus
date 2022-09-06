@@ -23,4 +23,9 @@ public class EmpServiceImpl implements EmpService {
     public Long countEmpList(EmpQuery param) {
         return empMapper.countEmpList(param);
     }
+
+    @Override
+    public void addEmp(Emp emp) {
+        empMapper.addEmp(emp);
+    }
 }

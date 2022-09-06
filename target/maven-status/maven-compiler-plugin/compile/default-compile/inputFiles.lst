@@ -1,5 +1,6 @@
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\user\entity\User.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\common\vo\Page.java
+D:\JavaWork\x-admin\src\main\java\cn\qqcn\emp\entity\Dept.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\user\service\UserService.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\common\interceptor\LoginInterceptor.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\emp\service\EmpService.java

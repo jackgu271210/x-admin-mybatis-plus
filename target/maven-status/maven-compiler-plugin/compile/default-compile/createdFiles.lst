@@ -11,6 +11,7 @@ cn\qqcn\user\mapper\UserMapper.class
 cn\qqcn\emp\controller\EmpController.class
 cn\qqcn\user\controller\UserController.class
 cn\qqcn\user\service\impl\UserServiceImpl.class
+cn\qqcn\emp\entity\Dept.class
 cn\qqcn\common\vo\Result.class
 cn\qqcn\emp\vo\EmpQuery.class
 cn\qqcn\emp\entity\Emp.class
