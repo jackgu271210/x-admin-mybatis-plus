@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 06/09/2022 19:39:00
+ Date: 07/09/2022 17:08:02
 */
 
 SET NAMES utf8mb4;
@@ -25,7 +25,7 @@ CREATE TABLE `dept`  (
   `dept_id` int NOT NULL AUTO_INCREMENT,
   `dept_name` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 301 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of dept
@@ -48,7 +48,7 @@ CREATE TABLE `emp`  (
   `address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `dept_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`emp_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of emp
@@ -63,6 +63,10 @@ INSERT INTO `emp` VALUES (7, '孙悟空', 'M', 35, 15000, '1900-02-03', '广东�
 INSERT INTO `emp` VALUES (8, '张飞', 'M', 35, 15000, '1900-02-03', '广东省佛山市', 100);
 INSERT INTO `emp` VALUES (9, '赵云', 'M', 35, 15000, '1900-02-03', '广东省佛山市', 200);
 INSERT INTO `emp` VALUES (10, '孙尚香', 'F', 35, 15000, '1900-02-03', '广东省佛山市', 100);
+INSERT INTO `emp` VALUES (11, '葫芦娃', '男', 7, 2000, '2022-08-29', '山东蓬莱市葫芦岛', 100);
+INSERT INTO `emp` VALUES (12, '金刚', 'M', 56, 4800, '2005-08-07', '太平洋夏威夷百慕大', 200);
+INSERT INTO `emp` VALUES (13, '奈德丽', 'F', 19, 2500, '2019-04-03', '瓦洛兰大陆扭曲丛林', 200);
+INSERT INTO `emp` VALUES (14, '春日一番', 'M', 43, 100, '1975-09-07', '东京秋叶原区西门町泡泡浴', 100);
 
 -- ----------------------------
 -- Table structure for user

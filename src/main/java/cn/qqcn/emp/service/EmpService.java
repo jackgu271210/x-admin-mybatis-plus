@@ -12,4 +12,5 @@ public interface EmpService {
     Long countEmpList(EmpQuery param);
     void addEmp(Emp emp);
     List<Dept> getAllDept();
+    void deleteEmpByIds(String ids);
 }

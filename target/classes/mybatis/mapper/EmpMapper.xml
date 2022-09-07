@@ -22,6 +22,7 @@
     <select id="getEmpList" parameterType="cn.qqcn.emp.vo.EmpQuery" resultMap="empMap">
         select * from emp a left join dept b on a.dept_id = b.dept_id
         <include refid="getEmpListWhere"></include>
+        order by emp_id desc
         limit #{start}, #{limit}
     </select>
     <!-- 统计员工数据量 -->
@@ -54,4 +55,8 @@
         values
         (#{name},#{age},#{sex},#{sal},#{birthday},#{address},#{deptId})
     </insert>
+    
+    <delete id="deleteEmpByIds" parameterType="String">
+        delete form emp where emp_id in (${ids})
+    </delete>
 </mapper>

@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="div-content">
-        <form class="layui-form layui-form-pane" action="">
+        <form class="layui-form layui-form-pane" id="form-search">
             <fieldset class="layui-elem-field">
                 <legend>搜索条件</legend>
                 <div class="layui-form-item">
@@ -41,7 +41,7 @@
                         </div>
                         
                         <div class="layui-inline">
-                            <button lay-submit lay-filter="btn-search-filter" type="button" class="layui-btn layui-btn-radius layui-btn-normal">
+                            <button id="btn-search" lay-submit lay-filter="btn-search-filter" type="button" class="layui-btn layui-btn-radius layui-btn-normal">
                                 <i class="layui-icon layui-icon-search"></i>
                                 搜索
                             </button>
@@ -76,9 +76,15 @@
             <button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="delete">删除</button>
         </div>
     </script>
-    
+    <script th:src="@{/lib/jquery-3.4.1/jquery-3.4.1.min.js}" charset="utf-8"></script>
     <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
     <script th:inline="javascript">
+        
+        function refreshTable() {
+            $('#form-search').reset;
+            $('#btn-search').click();
+        }
+        
         var ctxPath=[[@{/}]];
         layui.use(['laydate','table','form'], function(){
             var laydate = layui.laydate;
@@ -95,7 +101,13 @@
                         content: ctxPath+ 'emp/add/ui'
                     });
                 } else if (obj.event == 'delete') {
-                    alert('delete');
+                    var checkStatus = table.checkStatus('table-emp'); //idTest 即为基础参数 id 对应的值
+                    //选中的id
+                    var idArr = new Array();
+                    $(checkStatus.data).each(function() {
+                        idArr.push(this.empId);
+                    });
+                    console.log(idArr);
                 }
             });
             
@@ -113,14 +125,15 @@
                 ,toolbar: '#table-emp-toolbar'
                 ,limits: [5,10,30,50,100]
                 ,cols: [[ //表头
-                    {field: 'empId', title: '员工编号', width:120, sort: true, align: 'center'}
+                    {type: 'checkbox', width: 60}
+                    ,{field: 'empId', title: '员工编号', width:120, sort: true, align: 'center'}
                     ,{field: 'name', title: '姓名', width:140, align: 'center'}
                     ,{field: 'sex', title: '性别', width:80, sort: true, align: 'center',templet: '#convertSex'}
                     ,{field: 'age', title: '年龄', width:80, align: 'center'}
                     ,{field: 'sal', title: '工资', width: 140, align: 'center'}
                     ,{field: 'dept', title: '部门', width: 140, sort: true, align: 'center', templet: '#convertDept'}
                     ,{field: 'birthday', title: '生日', width: 180, sort: true, align: 'center'}
-                    ,{field: 'address', title: '家庭住址', align: 'center'}
+                    ,{field: 'address', title: '家庭住址',align: 'center'}
                     ,{title: '操作', width: 150, align: 'center'}
                 ]]
             });

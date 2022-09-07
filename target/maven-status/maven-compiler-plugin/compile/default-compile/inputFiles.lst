@@ -12,6 +12,7 @@ D:\JavaWork\x-admin\src\main\java\cn\qqcn\common\config\MyWebConfig.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\emp\controller\EmpController.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\emp\service\impl\EmpServiceImpl.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\XAdminApplication.java
+D:\JavaWork\x-admin\src\main\java\cn\qqcn\emp\mapper\DeptMapper.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\emp\mapper\EmpMapper.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\common\vo\Result.java
 D:\JavaWork\x-admin\src\main\java\cn\qqcn\user\controller\UserController.java
