@@ -1,4 +1,8 @@
 cn\qqcn\emp\service\impl\EmpServiceImpl.class
+cn\qqcn\common\exception\MyExceptionHandler.class
+cn\qqcn\news\controller\NewsController.class
+cn\qqcn\common\exception\NotFoundException.class
+cn\qqcn\news\entity\News.class
 cn\qqcn\common\vo\Page.class
 cn\qqcn\user\service\UserService.class
 cn\qqcn\common\interceptor\LoginInterceptor.class
@@ -7,6 +11,7 @@ cn\qqcn\user\entity\User.class
 cn\qqcn\common\config\MyWebConfig.class
 cn\qqcn\common\controller\controller.class
 cn\qqcn\emp\service\EmpService.class
+cn\qqcn\emp\mapper\DeptMapper.class
 cn\qqcn\user\mapper\UserMapper.class
 cn\qqcn\emp\controller\EmpController.class
 cn\qqcn\user\controller\UserController.class
