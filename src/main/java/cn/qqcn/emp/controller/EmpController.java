@@ -58,6 +58,7 @@ public class EmpController {
     public String getEmpById(@PathVariable("id") Integer id, Model model) {
         Emp emp = empservice.getEmpById(id);
         model.addAttribute("emp",emp);
+        model.addAttribute("deptList",empservice.getAllDept());
         return "/emp/empEdit";
     }
     

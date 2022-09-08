@@ -208,7 +208,12 @@
                         layer.close(index);
                     });
                 } else if(layEvent == 'edit') {
-                    alert('edit');
+                    layer.open({
+                        type:2,
+                        title: '编辑员工',
+                        area: ['88%','88%'],
+                        content: ctxPath+ 'emp/'+ data.empId
+                    });
                 }
             });
         });
