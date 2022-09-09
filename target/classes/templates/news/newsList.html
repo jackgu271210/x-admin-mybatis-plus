@@ -155,14 +155,10 @@
                 ,limits: [5,10,30,50,100]
                 ,cols: [[ //表头
                     {type: 'checkbox', width: 60}
-                    ,{field: 'empId', title: '员工编号', width:120, sort: true, align: 'center'}
-                    ,{field: 'name', title: '姓名', width:140, align: 'center'}
-                    ,{field: 'sex', title: '性别', width:80, sort: true, align: 'center',templet: '#convertSex'}
-                    ,{field: 'age', title: '年龄', width:80, align: 'center'}
-                    ,{field: 'sal', title: '工资', width: 140, align: 'center'}
-                    ,{field: 'dept', title: '部门', width: 140, sort: true, align: 'center', templet: '#convertDept'}
-                    ,{field: 'birthday', title: '生日', width: 180, sort: true, align: 'center'}
-                    ,{field: 'address', title: '家庭住址',align: 'center'}
+                    ,{field: 'id', title: 'ID', width:120, sort: true, align: 'center'}
+                    ,{field: 'title', title: '标题', align: 'center'}
+                    ,{field: 'createTime', title: '发布时间', width: 180, sort: true, align: 'center'}
+                    ,{field: 'updateTime', title: '更新时间',width: 180,align: 'center'}
                     ,{title: '操作', width: 150, align: 'center',toolbar: '#col-emp-toolbar'}
                 ]]
             });

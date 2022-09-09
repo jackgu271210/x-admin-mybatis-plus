@@ -19,33 +19,27 @@
           "title": "员工管理",
           "href": "emp",
           "icon": "layui-icon layui-icon-username",
-          "target": "_self",
-          "child": [
-            {
-              "title": "员工列表",
-              "href": "emp",
-              "icon": "layui-icon layui-icon-user",
-              "target": "_self"
-            },
-            {
-              "title": "地图",
-              "href": "welcome1",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            },
-            {
-              "title": "主页三",
-              "href": "page/welcome-3.html",
-              "icon": "fa fa-tachometer",
-              "target": "_self"
-            }
-          ]
+          "target": "_self"
         },
         {
-          "title": "新闻资讯",
+          "title": "新闻管理",
           "href": "news",
           "icon": "fa fa-window-maximize",
-          "target": "_self"
+          "target": "_self", 
+          "child": [
+              {
+                "title": "新闻类别",
+                "href": "",
+                "icon": "layui-icon layui-icon-user",
+                "target": "_self"
+              },
+              {
+                "title": "新闻管理",
+                "href": "news",
+                "icon": "fa fa-tachometer",
+                "target": "_self"
+              }
+          ]
         },
         {
           "title": "系统设置",
