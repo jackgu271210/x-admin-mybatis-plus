@@ -3,6 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.qqcn.news.mapper.NewsMapper">
-    insert into news
-    (title,content,count,img_url,elite,create_time,)
+    <resultMap id="newsMap" type="News">
+        <id column="id" property="id"></id>
+        <result column="title" property="title"></result>
+        <result column="content" property="content"></result>
+    </resultMap>
+    
+    <!-- 查询新闻列表数据 -->
+    <select id="getNewsList" parameterType="cn.qqcn.news.vo.NewsQuery" resultMap="newsMap">
+        select * from news
+        <include refid="getNewsListWhere"></include>
+        order by id desc
+        limit #{start}, #{limit}
+    </select>
+    <!-- 统计新闻数据量 -->
+    <select id="countNewsList" parameterType="cn.qqcn.news.vo.NewsQuery" resultType="Long">
+        select count(1) from news
+        <include refid="getNewsListWhere"></include>
+    </select>
+
+    <sql id="getNewsListWhere">
+        <where>
+            <if test="title != null">
+                and a.title like concat('%',#{title},'%')
+            </if>
+        </where>
+    </sql>
+    
+    <insert id="addNews" parameterType="News">
+        insert into news
+        (title,content,count,img_url,elite)
+        values
+        (#{title},#{content},#{count},#{imgUrl},#{elite})
+    </insert>
 </mapper>

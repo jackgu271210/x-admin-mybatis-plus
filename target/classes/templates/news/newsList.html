@@ -23,23 +23,11 @@
                 <div class="layui-form-item">
                     <div class="layui-field-box">
                         <div class="layui-inline">
-                            <label class="layui-form-label">员工姓名</label>
+                            <label class="layui-form-label">新闻标题</label>
                             <div class="layui-input-inline" style="width: 150px;">
-                                <input type="text" name="name" autocomplete="off" class="layui-input">
+                                <input type="text" name="title" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                        
-                        <div class="layui-inline">
-                            <label class="layui-form-label">生日</label>
-                            <div class="layui-input-inline" style="width: 120px;">
-                                <input type="text" name="startDate" placeholder="开始日期" autocomplete="off" class="form_date layui-input">
-                            </div>
-                            <div class="layui-form-mid">-</div>
-                            <div class="layui-input-inline" style="width: 120px;">
-                                <input type="text" name="endDate" placeholder="结束日期" autocomplete="off" class="form_date layui-input">
-                            </div>
-                        </div>
-                        
                         <div class="layui-inline">
                             <button id="btn-search" lay-submit lay-filter="btn-search-filter" type="button" class="layui-btn layui-btn-radius layui-btn-normal">
                                 <i class="layui-icon layui-icon-search"></i>
@@ -52,23 +40,6 @@
         </form>
         <table id="table-emp" lay-filter="table-emp-filter"></table>
     </div>
-    <script type="text/html" id="convertSex">
-        {{# 
-            if(d.sex == 'M') {
-                return '男';
-            } else if(d.sex == 'F') {
-                return '女';
-            } else {
-                return '不明';
-            }
-        }}
-    </script>
-
-    <script type="text/html" id="convertDept">
-        {{#
-            return d.dept.deptName;
-        }}
-    </script>
 
     <script type="text/html" id="table-emp-toolbar">
         <div class="layui-btn-container">
@@ -104,7 +75,7 @@
                         type:2,
                         title: '新增员工',
                         area: ['88%','88%'],
-                        content: ctxPath+ 'emp/add/ui'
+                        content: ctxPath+ 'news/add/ui'
                     });
                 } else if (obj.event == 'delete') {
                     var checkStatus = table.checkStatus('table-emp'); //idTest 即为基础参数 id 对应的值
@@ -121,7 +92,7 @@
 
                     layer.confirm('您确认删除选中记录?', {icon: 3, title:'删除确认'}, function(index){
                         //异步请求删除数据、结果显示、刷新表格
-                        var url = ctxPath + "emp/" + idArr.join(",");
+                        var url = ctxPath + "news/" + idArr.join(",");
                         var params = {
                             _method: "DELETE"
                         }
@@ -149,14 +120,15 @@
             //员工列表表格渲染
             table.render({
                 elem: '#table-emp'
-                ,url: ctxPath + 'emp/list' //数据接口
+                ,url: ctxPath + 'news/list' //数据接口
                 ,page: true //开启分页
                 ,toolbar: '#table-emp-toolbar'
                 ,limits: [5,10,30,50,100]
                 ,cols: [[ //表头
                     {type: 'checkbox', width: 60}
                     ,{field: 'id', title: 'ID', width:120, sort: true, align: 'center'}
-                    ,{field: 'title', title: '标题', align: 'center'}
+                    ,{field: 'title', title: '标题', width:120, align: 'center'}
+                    ,{field: 'content', title: '内容', align: 'center'}
                     ,{field: 'createTime', title: '发布时间', width: 180, sort: true, align: 'center'}
                     ,{field: 'updateTime', title: '更新时间',width: 180,align: 'center'}
                     ,{title: '操作', width: 150, align: 'center',toolbar: '#col-emp-toolbar'}
@@ -188,7 +160,7 @@
                 if(layEvent == 'del') {
                     layer.confirm('您确认删除选中员工：' + data.name + '?', {icon: 3, title:'删除确认'}, function(index){
                         //异步请求删除数据、结果显示、刷新表格
-                        var url = ctxPath + "emp/" + data.empId;
+                        var url = ctxPath + "news/" + data.id;
                         var params = {
                             _method: "DELETE"
                         }
@@ -208,7 +180,7 @@
                         type:2,
                         title: '编辑员工',
                         area: ['88%','88%'],
-                        content: ctxPath+ 'emp/'+ data.empId
+                        content: ctxPath+ 'news/'+ data.id
                     });
                 }
             });

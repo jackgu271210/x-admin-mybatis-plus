@@ -15,8 +15,6 @@ public class News implements Serializable {
     private Integer counter;
     private String imgUrl;
     private Boolean elite;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date updateTime;
 }
