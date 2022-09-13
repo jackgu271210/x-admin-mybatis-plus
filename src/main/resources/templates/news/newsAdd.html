@@ -24,12 +24,18 @@
         <div class="layui-form-item">
             <label class="layui-form-label">新闻缩略图</label>
             <div class="layui-input-inline">
-                <input type="text" name="imgUrl" required  lay-verify="required" class="layui-inline layui-input">
+                <input type="text" name="imgUrl" id="newsUploadImagePath" required  lay-verify="required" class="layui-inline layui-input">
             </div>
             <div class="layui-input-inline">
-                <button type="button" class="layui-btn layui-inline" id="test1">
+                <button type="button" class="layui-btn layui-inline" id="upload-button">
                     <i class="layui-icon">&#xe67c;</i>上传图片
                 </button>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图片预览</label>
+            <div class="layui-input-block">
+                <img id="newsUploadImage" alt="" style="width: 300px; height: 300px;">
             </div>
         </div>
         <div class="layui-form-item">
@@ -38,22 +44,54 @@
                 <textarea id="newsContent"></textarea>
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">首页显示</label>
+            <div class="layui-input-block news_elite_checkbox">
+                <input type="checkbox" name="elite" title="（如果选中的话将在首页推荐）" lay-skin="primary">
+            </div>
+        </div>
     </form>
     
     <script th:src="@{/layui/layui.js}" charset="utf-8"></script>
     <script th:inline="javascript">
         let ctxPath=[[@{/}]];
-        layui.use(['laydate','table','layedit','form'], function(){
-            let laydate = layui.laydate;
+        layui.use(['table','upload','layedit','form'], function(){
             let table = layui.table;
             let form = layui.form;
+            let upload = layui.upload;
             let layedit = layui.layedit;
             let $ = layui.$;
 
-            layedit.build('newsContent');
+            //执行实例
+            let uploadInst = upload.render({
+                elem: '#upload-button' //绑定元素
+                ,url: '/upload' //上传接口
+                ,done: function(res){
+                    if (res.code == 1) {
+                        //成功了
+                        layer.msg(res.msg);
+                        //首先我们要获得，我们上传之后的图片访问路径
+                        let imagePath = res.data.src;
+                        console.log(imagePath);
+                        $('#newsUploadImage').attr("src",imagePath);
+                        $('#newsUploadImagePath').attr("value",imagePath);
+                    }else{
+                        layer.msg(res.msg);
+                    }
+                }
+                ,error: function(){
+                    //失败了
+                }
+            });
             
-            laydate.render({
-                elem: '[name="birthday"]'
+            layedit.set({
+                uploadImage: {
+                    url: '/upload' //接口url
+                    ,type: 'post' //默认post
+                }
+            });
+            layedit.build('newsContent',{
+                height: 500
              });
 
             form.on('submit(btn-submit-filter)', function(data){
