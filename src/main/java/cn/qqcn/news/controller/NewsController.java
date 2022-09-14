@@ -5,13 +5,11 @@ import cn.qqcn.emp.entity.Dept;
 import cn.qqcn.news.entity.News;
 import cn.qqcn.news.service.NewsService;
 import cn.qqcn.news.vo.NewsQuery;
+import jdk.nashorn.internal.ir.CallNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +44,19 @@ public class NewsController {
     @GetMapping("/add/ui")
     public String toAddUI() {
         return "news/newsAdd";
+    }
+    
+    @GetMapping("/{id}")
+    public String getNewsById(@PathVariable("id") Integer id, Model model) {
+        News news = newsService.getNewsById(id);
+        model.addAttribute("news",news);
+        return "news/newsEdit";
+    }
+    
+    @PutMapping("")
+    @ResponseBody
+    public Result<Object> updateNews(News news) {
+        newsService.updateNews(news);
+        return Result.success("新闻修改成功！");
     }
 }

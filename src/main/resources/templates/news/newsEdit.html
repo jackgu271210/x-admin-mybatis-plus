@@ -14,17 +14,18 @@
     </style>
 </head>
 <body>
-    <form class="layui-form" action="">
+    <form class="layui-form" action="" th:object="${news}">
+        <input type="hidden" th:field="*{id}">
         <div class="layui-form-item">
             <label class="layui-form-label">新闻标题</label>
             <div class="layui-input-block">
-                <input type="text" name="title" required  lay-verify="required" placeholder="请输入新闻标题" autocomplete="off" class="layui-input">
+                <input type="text" th:field="*{title}" required  lay-verify="required" placeholder="请输入新闻标题" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">新闻缩略图</label>
             <div class="layui-input-inline">
-                <input type="text" name="imgUrl" id="newsUploadImagePath" required  lay-verify="required" class="layui-inline layui-input">
+                <input type="text" th:field="*{imgUrl}" id="newsUploadImagePath" required  lay-verify="required" class="layui-inline layui-input">
             </div>
             <div class="layui-input-inline">
                 <button type="button" class="layui-btn layui-inline" id="upload-button">
@@ -35,19 +36,19 @@
         <div class="layui-form-item">
             <label class="layui-form-label">图片预览</label>
             <div class="layui-input-block">
-                <img id="newsUploadImage" alt="" style="width: 300px; height: 300px;">
+                <img id="newsUploadImage" th:src="*{imgUrl}" alt="" style="width: 300px; height: 300px;">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">新闻内容</label>
             <div class="layui-input-block">
-                <textarea name="content" id="newsContent"></textarea>
+                <textarea th:field="*{content}" id="newsContent"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">首页显示</label>
             <div class="layui-input-block news_elite_checkbox">
-                <input type="checkbox" name="elite" title="（如果选中的话将在首页推荐）" lay-skin="primary">
+                <input type="checkbox" th:field="*{elite}" title="（如果选中的话将在首页推荐）" lay-skin="primary">
             </div>
         </div>
         <div class="layui-form-item">
@@ -105,6 +106,7 @@
                 console.log(data.field);
                 //异步请求提交数据
                 let url = ctxPath + "news";
+                data.field._method = "PUT";
                 $.post(url,data.field,function(res) {
                     if(res.code == 0) {
                         //成功提示

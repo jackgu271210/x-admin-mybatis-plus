@@ -41,13 +41,19 @@
         <div class="layui-form-item">
             <label class="layui-form-label">新闻内容</label>
             <div class="layui-input-block">
-                <textarea id="newsContent"></textarea>
+                <textarea name="content" id="newsContent"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">首页显示</label>
             <div class="layui-input-block news_elite_checkbox">
                 <input type="checkbox" name="elite" title="（如果选中的话将在首页推荐）" lay-skin="primary">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button id="btn-submit" class="layui-btn" lay-submit lay-filter="btn-submit-filter">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
     </form>
@@ -67,7 +73,7 @@
                 elem: '#upload-button' //绑定元素
                 ,url: '/upload' //上传接口
                 ,done: function(res){
-                    if (res.code == 1) {
+                    if (res.code == 0) {
                         //成功了
                         layer.msg(res.msg);
                         //首先我们要获得，我们上传之后的图片访问路径
@@ -96,8 +102,9 @@
 
             form.on('submit(btn-submit-filter)', function(data){
                 $("#btn-submit").attr("disabled", "disabled").addClass("layui-btn-disabled");
+                console.log(data.field);
                 //异步请求提交数据
-                let url = ctxPath + "emp";
+                let url = ctxPath + "news";
                 $.post(url,data.field,function(res) {
                     if(res.code == 0) {
                         //成功提示

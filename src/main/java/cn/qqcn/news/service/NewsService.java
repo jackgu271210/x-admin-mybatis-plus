@@ -11,4 +11,6 @@ public interface NewsService {
     void addNews(News news);
     Long countNewsList(NewsQuery param);
     List<News> getNewsList(NewsQuery param);
+    News getNewsById(Integer id);
+    void updateNews(News news);
 }

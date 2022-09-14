@@ -59,7 +59,7 @@ public class EmpController {
         Emp emp = empservice.getEmpById(id);
         model.addAttribute("emp",emp);
         model.addAttribute("deptList",empservice.getAllDept());
-        return "/emp/empEdit";
+        return "emp/empEdit";
     }
     
     @PutMapping("")

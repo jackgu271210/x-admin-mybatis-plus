@@ -32,8 +32,21 @@
     
     <insert id="addNews" parameterType="News">
         insert into news
-        (title,content,count,img_url,elite)
+        (title,content,counter,img_url,elite)
         values
-        (#{title},#{content},#{count},#{imgUrl},#{elite})
+        (#{title},#{content},#{counter},#{imgUrl},#{elite})
     </insert>
+    
+    <select id="getNewsById" parameterType="Integer" resultType="News">
+        select * from news where id = #{id}
+    </select>
+    
+    <update id="updateNews" parameterType="News">
+        update news
+        set title = #{title},
+            content = #{content},
+            img_url = #{imgUrl},
+            elite = #{elite}
+        where id = #{id}
+    </update>
 </mapper>

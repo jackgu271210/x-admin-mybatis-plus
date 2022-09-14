@@ -26,7 +26,7 @@ public class UploadController {
         System.out.println(imagePath);
         System.out.println("--------------------------");
         if(imagePath != null) {
-            dataJson.setCode(1);
+            dataJson.setCode(0);
             dataJson.setMsg("上传成功");
             HashMap<String, String> map = new HashMap<>();
             map.put("src",imagePath);

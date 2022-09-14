@@ -29,4 +29,14 @@ public class NewsServiceImpl implements NewsService {
     public List<News> getNewsList(NewsQuery param) {
         return newsMapper.getNewsList(param);
     }
+
+    @Override
+    public News getNewsById(Integer id) {
+        return newsMapper.getNewsById(id);
+    }
+
+    @Override
+    public void updateNews(News news) {
+        newsMapper.updateNews(news);
+    }
 }

@@ -127,8 +127,7 @@
                 ,cols: [[ //表头
                     {type: 'checkbox', width: 60}
                     ,{field: 'id', title: 'ID', width:120, sort: true, align: 'center'}
-                    ,{field: 'title', title: '标题', width:120, align: 'center'}
-                    ,{field: 'content', title: '内容', align: 'center'}
+                    ,{field: 'title', title: '标题', align: 'center'}
                     ,{field: 'createTime', title: '发布时间', width: 180, sort: true, align: 'center'}
                     ,{field: 'updateTime', title: '更新时间',width: 180,align: 'center'}
                     ,{title: '操作', width: 150, align: 'center',toolbar: '#col-emp-toolbar'}
@@ -178,7 +177,7 @@
                 } else if(layEvent == 'edit') {
                     layer.open({
                         type:2,
-                        title: '编辑员工',
+                        title: '编辑新闻',
                         area: ['88%','88%'],
                         content: ctxPath+ 'news/'+ data.id
                     });
