@@ -59,4 +59,11 @@ public class NewsController {
         newsService.updateNews(news);
         return Result.success("新闻修改成功！");
     }
+    
+    @DeleteMapping("/{ids}")
+    @ResponseBody
+    public Result<Object> deleteNewsByIds(@PathVariable("ids") String ids) {
+        newsService.deleteNewsByIds(ids);
+        return Result.success("新闻删除成功！");
+    }
 }

@@ -87,9 +87,9 @@
                     //选中的id
                     var idArr = new Array();
                     $(checkStatus.data).each(function() {
-                        idArr.push(this.empId);
+                        idArr.push(this.id);
                     });
-
+                    console.log(idArr);
                     layer.confirm('您确认删除选中记录?', {icon: 3, title:'删除确认'}, function(index){
                         //异步请求删除数据、结果显示、刷新表格
                         var url = ctxPath + "news/" + idArr.join(",");
@@ -157,11 +157,11 @@
                 var data = obj.data; //获得当前行数据
                 var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
                 if(layEvent == 'del') {
-                    layer.confirm('您确认删除选中员工：' + data.name + '?', {icon: 3, title:'删除确认'}, function(index){
+                    layer.confirm('您确认要删除此条新闻？', {icon: 3, title:'删除确认'}, function(index){
                         //异步请求删除数据、结果显示、刷新表格
                         var url = ctxPath + "news/" + data.id;
                         var params = {
-                            _method: "DELETE"
+                            _method: "delete"
                         }
                         $.post(url,params,function(res) {
                             if(res.code == 0) {

@@ -23,12 +23,17 @@ spring:
         enabled: true
     throw-exception-if-no-handler-found: true
 
-mybatis:
+mybatis-plus:
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: cn.qqcn.*.entity
   configuration:
     map-underscore-to-camel-case: true #驼峰转换
-    
+  global-config:
+    db-config:
+      logic-delete-field: deleted # set deleted logicDelete
+      logic-delete-value: 1 # deleted
+      logic-not-delete-value: 0
+
 logging:
   level:
     cn.qqcn: debug

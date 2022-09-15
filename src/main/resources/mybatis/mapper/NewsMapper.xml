@@ -49,4 +49,8 @@
             elite = #{elite}
         where id = #{id}
     </update>
+    
+    <delete id="deleteNewsByIds" parameterType="String">
+        delete from news where id in (${ids}) 
+    </delete>
 </mapper>

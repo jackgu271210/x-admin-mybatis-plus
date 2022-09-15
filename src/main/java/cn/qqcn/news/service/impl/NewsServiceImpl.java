@@ -39,4 +39,9 @@ public class NewsServiceImpl implements NewsService {
     public void updateNews(News news) {
         newsMapper.updateNews(news);
     }
+
+    @Override
+    public void deleteNewsByIds(String ids) {
+        newsMapper.deleteNewsByIds(ids);
+    }
 }

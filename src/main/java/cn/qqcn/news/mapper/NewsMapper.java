@@ -11,4 +11,5 @@ public interface NewsMapper {
     Long countNewsList(NewsQuery param);
     News getNewsById(Integer id);
     void updateNews(News news);
+    void deleteNewsByIds(String ids);
 }

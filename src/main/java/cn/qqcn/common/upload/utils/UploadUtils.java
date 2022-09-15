@@ -9,7 +9,7 @@ import java.util.UUID;
 public class UploadUtils {
     
     //定义一个目标路径，就是我们要把图片上传的位置
-    private static final String BASE_PATH = "G:\\soft\\apache-tomcat-9.0.65-windows-x64\\apache-tomcat-9.0.65\\webapps\\upload";
+    private static final String BASE_PATH = "D:\\Java\\apache-tomcat-9.0.65\\webapps\\upload";
     
     //定义访问图片的路径
     private static final String SERVER_PATH = "http://localhost:8080/upload/";
