@@ -1,15 +1,16 @@
 package cn.qqcn.news.mapper;
 
 import cn.qqcn.news.entity.News;
-import cn.qqcn.news.vo.NewsQuery;
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 
-import java.util.List;
+/**
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author yanzhao
+ * @since 2022-09-15
+ */
+public interface NewsMapper extends BaseMapper<News> {
 
-public interface NewsMapper {
-    void addNews(News news);
-    List<News> getNewsList(NewsQuery param);
-    Long countNewsList(NewsQuery param);
-    News getNewsById(Integer id);
-    void updateNews(News news);
-    void deleteNewsByIds(String ids);
 }

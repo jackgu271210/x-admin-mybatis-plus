@@ -32,6 +32,20 @@
 <!--            <artifactId>mybatis-spring-boot-starter</artifactId>-->
 <!--            <version>2.1.1</version>-->
 <!--        </dependency>-->
+
+
+        <!--mybatis-plus 代码生成器依赖-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generate</artifactId>
+            <version>2.3</version>
+        </dependency>
+        
+        <!--freemarker 依赖-->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
         
         <!-- mybatis-plus -->
         <dependency>
@@ -80,4 +94,25 @@
             <version>5.4.2</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <classpathScope>test</classpathScope>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
 </project>

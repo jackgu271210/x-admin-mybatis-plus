@@ -1,17 +1,16 @@
 package cn.qqcn.news.service;
 
-import cn.qqcn.emp.vo.EmpQuery;
 import cn.qqcn.news.entity.News;
-import cn.qqcn.news.vo.NewsQuery;
+import com.baomidou.mybatisplus.service.IService;
 
-import java.util.List;
+/**
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author yanzhao
+ * @since 2022-09-15
+ */
+public interface NewsService extends IService<News> {
 
-public interface NewsService {
-    
-    void addNews(News news);
-    Long countNewsList(NewsQuery param);
-    List<News> getNewsList(NewsQuery param);
-    News getNewsById(Integer id);
-    void updateNews(News news);
-    void deleteNewsByIds(String ids);
 }
